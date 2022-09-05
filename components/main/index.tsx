@@ -1,5 +1,11 @@
+import MainPopular from "./MainPopular";
+
 const Main = () => {
-  return <div>main</div>;
+  return (
+    <div>
+      <MainPopular />
+    </div>
+  );
 };
 
 export default Main;

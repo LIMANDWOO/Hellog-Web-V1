@@ -2,6 +2,7 @@ import { AppProps } from "next/app";
 import { ThemeProvider } from "styled-components";
 import useTheme from "../../../hooks/theme/useTheme";
 import GlobalStyle from "../../../styles/globalStyle";
+import PageTemplate from "../PageTemplate";
 
 const ThemeProviderContainer = ({ Component, pageProps }: any) => {
   const { styledTheme } = useTheme();
@@ -9,7 +10,9 @@ const ThemeProviderContainer = ({ Component, pageProps }: any) => {
   return (
     <ThemeProvider theme={styledTheme}>
       <GlobalStyle />
-      <Component {...pageProps} />
+      <PageTemplate>
+        <Component {...pageProps} />
+      </PageTemplate>
     </ThemeProvider>
   );
 };
