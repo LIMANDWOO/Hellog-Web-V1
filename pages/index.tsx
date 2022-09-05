@@ -1,7 +1,11 @@
 import type { NextPage } from "next";
+import Main from "../components/main";
+import useMain from "../hooks/main/useMain";
 
 const MainPage: NextPage = () => {
-  return <div>hellog</div>;
+  useMain();
+
+  return <Main />;
 };
 
 export default MainPage;
