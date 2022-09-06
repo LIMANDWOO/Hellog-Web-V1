@@ -1,3 +1,4 @@
+import { useMemo } from "react";
 import { useRecoilState } from "recoil";
 import { THEME_KEY } from "../../constants/theme/theme.constant";
 import { ETheme } from "../../enum/theme/theme.enum";
@@ -15,9 +16,15 @@ const useTheme = () => {
     setTheme(switchTheme);
   };
 
-  const styledTheme = () => (theme === LIGHT ? lightTheme : darkTheme);
+  const styledTheme = useMemo(
+    () => (theme === LIGHT ? lightTheme : darkTheme),
+    [LIGHT, theme]
+  );
 
-  const enumTheme = () => (theme === LIGHT ? LIGHT : DARK);
+  const enumTheme: ETheme = useMemo(
+    () => (theme === LIGHT ? LIGHT : DARK),
+    [DARK, LIGHT, theme]
+  );
 
   return {
     toggleTheme,

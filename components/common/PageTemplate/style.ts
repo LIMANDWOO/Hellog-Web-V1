@@ -1,17 +1,20 @@
-import styled from "styled-components";
+import styled, { css } from "styled-components";
+import { palette } from "../../../styles/palette";
 
 export const PageTemplateContainer = styled.div`
   width: 100%;
-  height: 100vh;
+  min-height: 100vh;
+  height: auto;
   display: flex;
   flex-direction: column;
   align-items: center;
+  background-color: ${({ theme }) => theme.backgroundColor};
 `;
 
 export const PageTemplateWrap = styled.div`
-  width: 1376px;
+  width: 1160px;
   height: 100%;
   display: flex;
   flex-direction: column;
-  margin-top: 32px;
+  margin-top: 120px;
 `;

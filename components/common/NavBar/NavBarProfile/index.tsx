@@ -1,3 +1,5 @@
+import DarkmodeButton from "../../DarkmodeButton";
+import PostingButton from "../../PostingButton";
 import { NavBarProfileContainer, NavBarProfileImg } from "./style";
 
 interface Props {
@@ -7,6 +9,8 @@ interface Props {
 const NavBarProfile = ({ imageUrl }: Props) => {
   return (
     <NavBarProfileContainer>
+      <PostingButton />
+      <DarkmodeButton />
       <NavBarProfileImg src={imageUrl} />
     </NavBarProfileContainer>
   );

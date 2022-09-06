@@ -1,9 +1,17 @@
+import { useRouter } from "next/router";
+import { Post } from "../../../types/post/post.type";
 import { PostCardBanner, PostCardContainer } from "./style";
 
-const PostCard = () => {
+interface Props {
+  data: Post;
+}
+
+const PostCard = ({ data }: Props) => {
+  const router = useRouter();
+
   return (
-    <PostCardContainer>
-      <PostCardBanner />
+    <PostCardContainer onClick={() => router.push(`/post/${data?.id}`)}>
+      <PostCardBanner src={data?.image} />
     </PostCardContainer>
   );
 };
