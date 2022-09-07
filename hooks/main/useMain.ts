@@ -6,11 +6,11 @@ import token from "../../lib/token/token";
 const useMain = () => {
   const router = useRouter();
 
-  useEffect(() => {
-    if (token.getToken(ACCESS_TOKEN_KEY) === null) {
-      router.push("/auth");
-    }
-  }, []);
+  //   useEffect(() => {
+  //     if (token.getToken(ACCESS_TOKEN_KEY) === null) {
+  //       router.push("/auth");
+  //     }
+  //   }, []);
 
   return {};
 };
