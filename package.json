@@ -10,6 +10,8 @@
   },
   "dependencies": {
     "@react-icons/all-files": "^4.1.0",
+    "@toast-ui/editor": "^3.2.0",
+    "@toast-ui/react-editor": "^3.2.0",
     "@types/jsonwebtoken": "^8.5.9",
     "axios": "^0.27.2",
     "jsonwebtoken": "^8.5.1",

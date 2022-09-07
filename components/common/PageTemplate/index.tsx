@@ -1,3 +1,4 @@
+import { useRouter } from "next/router";
 import { ReactNode } from "react";
 import NavBar from "../NavBar";
 import { PageTemplateContainer, PageTemplateWrap } from "./style";
@@ -7,9 +8,11 @@ interface Props {
 }
 
 const PageTemplate = ({ children }: Props) => {
+  const { asPath } = useRouter();
+
   return (
     <PageTemplateContainer>
-      <NavBar />
+      {!(asPath === "/write" || asPath === "/auth") && <NavBar />}
       <PageTemplateWrap>{children}</PageTemplateWrap>
     </PageTemplateContainer>
   );
