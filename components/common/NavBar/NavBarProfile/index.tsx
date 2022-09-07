@@ -1,5 +1,5 @@
 import DarkmodeButton from "../../DarkmodeButton";
-import PostingButton from "../../PostingButton";
+import PostingButton from "../../WritingButton";
 import { NavBarProfileContainer, NavBarProfileImg } from "./style";
 
 interface Props {

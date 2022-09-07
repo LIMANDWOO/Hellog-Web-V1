@@ -10,7 +10,7 @@ const PostCard = ({ data }: Props) => {
   const router = useRouter();
 
   return (
-    <PostCardContainer onClick={() => router.push(`/post/${data?.id}`)}>
+    <PostCardContainer onClick={() => router.push(`/read/${data?.id}`)}>
       <PostCardBanner src={data?.image} />
     </PostCardContainer>
   );
