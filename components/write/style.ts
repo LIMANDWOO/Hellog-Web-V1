@@ -56,6 +56,10 @@ export const WriteExitButton = styled.button`
   align-items: center;
   justify-content: center;
   background-color: ${palette.gray[300]};
+
+  &:hover {
+    background-color: rgba(1, 1, 1, 0.4);
+  }
 `;
 
 export const WriteSubmitButton = styled.button`
@@ -70,4 +74,8 @@ export const WriteSubmitButton = styled.button`
   display: flex;
   align-items: center;
   justify-content: center;
+
+  &:hover {
+    opacity: 80%;
+  }
 `;
