@@ -1,5 +1,7 @@
+import { ProfileCategoryContainer } from "./style";
+
 const ProfileCategory = () => {
-  return <div></div>;
+  return <ProfileCategoryContainer></ProfileCategoryContainer>;
 };
 
 export default ProfileCategory;

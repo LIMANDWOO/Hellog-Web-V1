@@ -42,4 +42,5 @@ export const ProfileHeaderDescription = styled.p`
 
 export const ProfileWrap = styled.div`
   display: flex;
+  margin-top: 30px;
 `;
