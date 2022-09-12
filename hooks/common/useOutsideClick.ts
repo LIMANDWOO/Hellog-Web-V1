@@ -7,7 +7,6 @@ interface Params {
 
 const useOutsideClick = ({ ref, setState }: Params) => {
   const handleClickOutside = (e: Event) => {
-    console.log("바깥쪽 클릭");
     if (ref && !ref?.current?.contains(e.target as Node)) {
       setState(true);
     }

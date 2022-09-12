@@ -1,3 +1,5 @@
+import ProfileCategory from "./ProfileCategory";
+import ProfileMyPost from "./ProfileMyPost";
 import {
   ProfileContainer,
   ProfileHeaderDescription,
@@ -21,7 +23,10 @@ const Proflie = () => {
           혁신적인 FE를 선호합니다
         </ProfileHeaderDescription>
       </ProfileHeaderWrap>
-      <ProfileWrap></ProfileWrap>
+      <ProfileWrap>
+        <ProfileCategory />
+        <ProfileMyPost />
+      </ProfileWrap>
     </ProfileContainer>
   );
 };

@@ -1,5 +1,7 @@
+import { ProfileMyPostContaienr } from "./style";
+
 const ProfileMyPost = () => {
-  return <div></div>;
+  return <ProfileMyPostContaienr>sss</ProfileMyPostContaienr>;
 };
 
 export default ProfileMyPost;
