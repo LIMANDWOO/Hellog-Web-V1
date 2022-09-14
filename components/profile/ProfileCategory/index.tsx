@@ -1,6 +1,6 @@
 import { PostCategory } from "../../../types/post/post.type";
 import ProfileCategoryItem from "./ProfileCategoryItem";
-import { ProfileCategoryContainer } from "./style";
+import { ProfileCategoryContainer, ProfileCategoryWrap } from "./style";
 
 const TEST: PostCategory[] = [
   {
@@ -36,9 +36,11 @@ const TEST: PostCategory[] = [
 const ProfileCategory = () => {
   return (
     <ProfileCategoryContainer>
-      {TEST.map((item, idx) => (
-        <ProfileCategoryItem data={item} key={idx} />
-      ))}
+      <ProfileCategoryWrap>
+        {TEST.map((item, idx) => (
+          <ProfileCategoryItem data={item} key={idx} />
+        ))}
+      </ProfileCategoryWrap>
     </ProfileCategoryContainer>
   );
 };

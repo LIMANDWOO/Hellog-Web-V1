@@ -1,3 +1,4 @@
+import { useRouter } from "next/router";
 import { PostCategory } from "../../../../types/post/post.type";
 import {
   ProfileCategoryItemContainer,
@@ -10,8 +11,13 @@ interface Props {
 }
 
 const ProfileCategoryItem = ({ data }: Props) => {
+  const router = useRouter();
+  const memberId = 1;
+
   return (
-    <ProfileCategoryItemContainer>
+    <ProfileCategoryItemContainer
+      onClick={() => router.push(`/profile/${memberId}?tag=${data.title}`)}
+    >
       <ProfileCategoryItemTitle>{data.title}</ProfileCategoryItemTitle>
       <ProfileCategoryItemCount>({data.count})</ProfileCategoryItemCount>
     </ProfileCategoryItemContainer>
