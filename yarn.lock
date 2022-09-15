@@ -2232,6 +2232,11 @@
   "resolved" "https://registry.npmjs.org/text-table/-/text-table-0.2.0.tgz"
   "version" "0.2.0"
 
+"time-counting@^2.0.2":
+  "integrity" "sha512-UC9AlAUkxch27TlFWbE3Ka3ktgVx0zl2qNaFaF49N925YVBv0bAoeg3VrwjvQ3bkdICjO+6Wj2WcffT/HVVPQQ=="
+  "resolved" "https://registry.npmjs.org/time-counting/-/time-counting-2.0.2.tgz"
+  "version" "2.0.2"
+
 "to-fast-properties@^2.0.0":
   "integrity" "sha512-/OaKK0xYrs3DmxRYqL/yDc+FxFUVYhDlXMhRmv3z915w2HF1tnN1omB354j8VUGO/hbRzyD6Y3sA7v7GS/ceog=="
   "resolved" "https://registry.npmjs.org/to-fast-properties/-/to-fast-properties-2.0.0.tgz"
