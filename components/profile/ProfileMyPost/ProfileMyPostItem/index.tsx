@@ -1,5 +1,10 @@
 import { Post } from "../../../../types/post/post.type";
-import { ProfileMyPostItemBanner, ProfileMyPostItemContainer } from "./style";
+import {
+  ProfileMyPostItemBanner,
+  ProfileMyPostItemContainer,
+  ProfileMyPostItemSummary,
+  ProfileMyPostItemTitle,
+} from "./style";
 
 interface Props {
   data: Post;
@@ -9,7 +14,8 @@ const ProfileMyPostItem = ({ data }: Props) => {
   return (
     <ProfileMyPostItemContainer>
       <ProfileMyPostItemBanner src={data.image} />
-      <p>{data.content}</p>
+      <ProfileMyPostItemTitle>{data.title}</ProfileMyPostItemTitle>
+      <ProfileMyPostItemSummary>{data.summary}</ProfileMyPostItemSummary>
     </ProfileMyPostItemContainer>
   );
 };

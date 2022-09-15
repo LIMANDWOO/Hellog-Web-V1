@@ -13,8 +13,12 @@ const NavBarProfileDropdown = () => {
     router.push("/auth");
   };
 
+  const memberId = 1;
+
   return (
-    <NavBarProfileDropdownContainer onClick={() => router.push("/profile/1")}>
+    <NavBarProfileDropdownContainer
+      onClick={() => router.push(`/profile/${memberId}?tag=전체조회`)}
+    >
       <NavBarProfileDropdownItemContainer>
         내 프로필
       </NavBarProfileDropdownItemContainer>

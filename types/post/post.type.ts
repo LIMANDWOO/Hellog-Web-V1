@@ -9,8 +9,3 @@ export interface Post {
   readonly reg__dt: string;
   readonly upd__dt: string;
 }
-
-export interface PostCategory {
-  title: string;
-  count: number;
-}

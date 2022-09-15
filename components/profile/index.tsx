@@ -1,4 +1,4 @@
-import ProfileCategory from "./ProfileCategory";
+import ProfileCategory from "./ProfileTag";
 import ProfileMyPost from "./ProfileMyPost";
 import {
   ProfileContainer,
