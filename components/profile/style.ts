@@ -12,11 +12,28 @@ export const ProfileHeaderWrap = styled.div`
   width: 100%;
   height: 300px;
   display: flex;
-  flex-direction: column;
-  align-items: center;
   background-color: ${({ theme }) => theme.backgroundColor2};
   border-radius: 5px;
   padding-bottom: 30px;
+`;
+
+export const ProfileHeaderLeftWrap = styled.div`
+  width: 100%;
+  height: 100%;
+`;
+
+export const ProfileHeaderMiddleWrap = styled.div`
+  min-width: 240px;
+  max-width: 240px;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+`;
+
+export const ProfileHeaderRightWrap = styled.div`
+  width: 100%;
+  height: 100%;
 `;
 
 export const ProfileHeaderImg = styled.img`
