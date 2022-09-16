@@ -8,4 +8,10 @@ const MainPage: NextPage = () => {
   return <Main />;
 };
 
+export const getServerSideProps = async () => {
+  return {
+    props: {},
+  };
+};
+
 export default MainPage;
