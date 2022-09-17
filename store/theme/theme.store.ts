@@ -4,6 +4,6 @@ import { getTheme } from "../../util/theme/getTheme";
 import { v1 } from "uuid";
 
 export const themeMode = atom<ETheme>({
-  key: `themeMode/${v1()}`,
+  key: `theme/themeMode${v1()}`,
   default: getTheme(),
 });

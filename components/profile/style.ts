@@ -55,6 +55,7 @@ export const ProfileHeaderDescription = styled.p`
   font-size: 16px;
   color: ${palette.gray[400]};
   margin-top: 10px;
+  text-align: center;
 `;
 
 export const ProfileWrap = styled.div`

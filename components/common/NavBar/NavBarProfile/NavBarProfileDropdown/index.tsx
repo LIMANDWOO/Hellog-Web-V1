@@ -16,13 +16,15 @@ const NavBarProfileDropdown = () => {
   const memberId = 1;
 
   return (
-    <NavBarProfileDropdownContainer
-      onClick={() => router.push(`/profile/${memberId}?tag=전체조회`)}
-    >
-      <NavBarProfileDropdownItemContainer>
+    <NavBarProfileDropdownContainer>
+      <NavBarProfileDropdownItemContainer
+        onClick={() => router.push(`/profile/${memberId}?tag=전체조회`)}
+      >
         내 프로필
       </NavBarProfileDropdownItemContainer>
-      <NavBarProfileDropdownItemContainer>
+      <NavBarProfileDropdownItemContainer
+        onClick={() => router.push(`/setting/${memberId}`)}
+      >
         설정
       </NavBarProfileDropdownItemContainer>
       <NavBarProfileDropdownItemContainer onClick={logout}>
