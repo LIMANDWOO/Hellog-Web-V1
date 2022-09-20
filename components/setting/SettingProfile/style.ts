@@ -3,13 +3,24 @@ import { palette } from "../../../styles/palette";
 
 export const SettingProfileContainer = styled.div`
   width: 325px;
-  height: 410px;
+  height: min-content;
   display: flex;
   flex-direction: column;
-  align-items: center;
+  row-gap: 30px;
   background-color: ${({ theme }) => theme.backgroundColor2};
   border-radius: 5px;
   padding: 20px;
+  position: sticky;
+  top: 20px;
+`;
+
+export const SettingProfileWrap = styled.div`
+  width: 100%;
+  min-height: 372px;
+  max-height: 372px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 `;
 
 export const SettingProfileImg = styled.img`
