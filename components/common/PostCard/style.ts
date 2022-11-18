@@ -17,10 +17,11 @@ export const PostCardContainer = styled.div`
 `;
 
 export const PostCardBanner = styled.img`
-  width: 100%;
+  min-width: 100%;
   min-height: 160px;
   max-height: 160px;
   object-fit: cover;
+  background-color: black;
 `;
 
 export const PostCardDescriptionWrap = styled.div`

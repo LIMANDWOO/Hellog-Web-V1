@@ -1,5 +1,11 @@
+import { ReadContainer, ReadContentWrap } from "./style";
+
 const Read = () => {
-  return <div></div>;
+  return (
+    <ReadContainer>
+      <ReadContentWrap>ssss</ReadContentWrap>
+    </ReadContainer>
+  );
 };
 
 export default Read;

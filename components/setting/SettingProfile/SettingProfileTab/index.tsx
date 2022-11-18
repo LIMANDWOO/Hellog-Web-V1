@@ -1,9 +1,10 @@
-import { useState } from "react";
+import { useRecoilState } from "recoil";
 import { SETTING_FORM_TAB_ITEMS } from "../../../../constants/setting/setting.constant";
+import { settimgTabAtom } from "../../../../store/setting/setting.store";
 import { SettingProfileTabContainer, SettingProfileTabItem } from "./style";
 
 const SettingProfileTab = () => {
-  const [tab, setTab] = useState("내정보 변경");
+  const [tab, setTab] = useRecoilState(settimgTabAtom);
 
   return (
     <SettingProfileTabContainer>

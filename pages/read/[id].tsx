@@ -1,9 +1,10 @@
 import { GetServerSidePropsContext, NextPage } from "next";
 import { dehydrate, QueryClient } from "react-query";
+import Read from "../../components/read";
 import postRepository from "../../repository/post/post.repository";
 
 const ReadPage: NextPage = () => {
-  return <div>읽기</div>;
+  return <Read />;
 };
 
 export const getServerSideProps = async ({

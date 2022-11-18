@@ -1,14 +1,14 @@
+import { MyLink } from "../../../../types/myLink/myLink.type";
 import { ProfileMyLinkItemContainer, ProfileMyLinkItemImg } from "./style";
 
 interface Props {
-  img: string;
-  redirectUrl: string;
+  data: MyLink;
 }
 
-const ProfileMyLinkItem = ({ img, redirectUrl }: Props) => {
+const ProfileMyLinkItem = ({ data }: Props) => {
   return (
-    <ProfileMyLinkItemContainer onClick={() => window.open(redirectUrl)}>
-      <ProfileMyLinkItemImg src={img} />
+    <ProfileMyLinkItemContainer onClick={() => window.open(data.redirectUrl)}>
+      <ProfileMyLinkItemImg src={data.img} />
     </ProfileMyLinkItemContainer>
   );
 };

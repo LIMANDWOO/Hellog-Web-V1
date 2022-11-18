@@ -1,9 +1,9 @@
 import { useRouter } from "next/router";
-import { Post } from "../../../types/post/post.type";
+import { PostDetail } from "../../../types/post/post.type";
 import { PostCardBanner, PostCardContainer } from "./style";
 
 interface Props {
-  data: Post;
+  data: PostDetail;
 }
 
 const PostCard = ({ data }: Props) => {

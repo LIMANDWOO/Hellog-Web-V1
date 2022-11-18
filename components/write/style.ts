@@ -1,4 +1,5 @@
 import styled from "styled-components";
+import { editorStyle } from "../../styles/editorStyle";
 import { palette } from "../../styles/palette";
 
 export const WriteContainer = styled.div`
@@ -10,11 +11,17 @@ export const WriteContainer = styled.div`
   left: 0px;
   display: flex;
   flex-direction: column;
+  z-index: 1;
 `;
 
 export const WriteHeaderWrap = styled.div`
   width: 100%;
   height: 80px;
+`;
+
+export const WriteEditorWrap = styled.div`
+  width: 100%;
+  ${editorStyle}
 `;
 
 export const WriteHeaderTitleInput = styled.input`

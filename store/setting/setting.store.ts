@@ -6,3 +6,13 @@ export const settimgTabAtom = atom<string>({
   key: `setting/settimgTabAtom${v1()}`,
   default: SETTING_FORM_TAB_ITEMS[0],
 });
+
+export const settingFormModifyModeAtom = atom<{
+  [key: string]: boolean;
+}>({
+  key: `setting/settingFormModifyModeAtom${v1()}`,
+  default: {
+    modifyMyLink: false,
+    modifyMyName: false,
+  },
+});
