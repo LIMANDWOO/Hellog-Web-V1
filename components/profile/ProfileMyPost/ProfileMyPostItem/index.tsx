@@ -1,6 +1,6 @@
 import { useRouter } from "next/router";
 import TimeCounting from "time-counting";
-import { Post } from "../../../../types/post/post.type";
+import { Post, PostDetail } from "../../../../types/post/post.type";
 import {
   ProfileMyPostItemBanner,
   ProfileMyPostItemBottomWrap,
@@ -14,7 +14,7 @@ import {
 import { FaHeart } from "@react-icons/all-files/fa/FaHeart";
 
 interface Props {
-  data: Post;
+  data: PostDetail;
 }
 
 const ProfileMyPostItem = ({ data }: Props) => {
@@ -22,19 +22,19 @@ const ProfileMyPostItem = ({ data }: Props) => {
 
   return (
     <ProfileMyPostItemContainer onClick={() => router.push(`/read/${data.id}`)}>
-      <ProfileMyPostItemBanner src={data.image} />
+      <ProfileMyPostItemBanner src={data.thumbnail} />
       <ProfileMyPostItemTitle>{data.title}</ProfileMyPostItemTitle>
       <ProfileMyPostItemSummary>{data.summary}</ProfileMyPostItemSummary>
       <ProfileMyPostItemBottomWrap>
         <ProfileMyPostItemLikeText style={{ marginTop: "auto" }}>
-          {TimeCounting(data.reg__dt, { lang: "ko" })}
+          {TimeCounting(data.createdDate, { lang: "ko" })}
         </ProfileMyPostItemLikeText>
         <ProfileMyPostItemLikeWrap>
           <ProfileMyPostItemLikeIcon>
             <FaHeart />
           </ProfileMyPostItemLikeIcon>
           <ProfileMyPostItemLikeText>
-            {data.like__count}
+            {data.likeCount}
           </ProfileMyPostItemLikeText>
         </ProfileMyPostItemLikeWrap>
       </ProfileMyPostItemBottomWrap>

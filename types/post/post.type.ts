@@ -1,14 +1,22 @@
+import { StudentMember } from "../member/member.type";
+
 export interface Post {
   title: string;
   content: string;
   summary: string;
+  thumbnail: string;
+  category: string[];
 }
 
 export interface PostDetail extends Post {
   readonly id: number;
   status: "ACTIVE" | "BANNED";
-  like__count: number;
-  readonly reg__dt: string;
-  readonly upd__dt: string;
-  image: string;
+  likeCount: number;
+  readonly createdDate: string;
+  readonly modifiedDate: string;
+  student: StudentMember;
 }
+
+export interface TrendingPostsResponse {}
+
+export interface PostResponse {}

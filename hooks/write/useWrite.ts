@@ -1,5 +1,8 @@
 import { Editor } from "@toast-ui/react-editor";
 import { ChangeEvent, useEffect, useRef, useState } from "react";
+import { useRecoilState } from "recoil";
+import { usePostPost } from "../../quries/post/post.query";
+import { writeImageSrcAtom } from "../../store/write/write.store";
 import { Post } from "../../types/post/post.type";
 
 const useWrite = () => {
@@ -7,11 +10,21 @@ const useWrite = () => {
     title: "",
     content: "",
     summary: "",
+    category: [],
+    thumbnail: "",
   });
+
+  const [image, setImage] = useRecoilState(writeImageSrcAtom);
 
   const [isComplete, setIsComplete] = useState(false);
 
   const editorRef = useRef<Editor>(null);
+
+  const postPostMutation = usePostPost();
+
+  useEffect(() => {
+    setPostData((prev) => ({ ...prev, thumbnail: image }));
+  }, [image]);
 
   useEffect(() => {
     if (editorRef.current) {
@@ -47,7 +60,7 @@ const useWrite = () => {
     setIsComplete(true);
   };
 
-  const onSubmitPost = () => {
+  const onSubmitPost = async () => {
     const { summary } = postData;
 
     if (summary === "") {
@@ -55,7 +68,19 @@ const useWrite = () => {
       return;
     }
 
-    console.log(postData);
+    if (image === "") {
+      window.alert("썸네일을 추가해주세요");
+      return;
+    }
+    postPostMutation.mutateAsync(postData, {
+      onSuccess: () => {
+        window.alert("게시물 등록 성공");
+        setImage("");
+      },
+      onError: () => {
+        window.alert("게시물 등록 실패");
+      },
+    });
   };
 
   return {

@@ -12,9 +12,11 @@ export const getServerSideProps = async ({
 }: GetServerSidePropsContext) => {
   const queryClient = new QueryClient();
 
-  // await queryClient.prefetchQuery(["post/getPost", query.id], () =>
-  //   postRepository.getPost({ id: Number(query.id) })
-  // );
+  await Promise.all([
+    queryClient.prefetchQuery(["post/getPost", query.id], () =>
+      postRepository.getPost({ id: Number(query.id) })
+    ),
+  ]);
 
   return {
     props: {

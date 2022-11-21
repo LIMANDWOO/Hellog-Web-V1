@@ -1,17 +1,35 @@
-import { useQuery } from "react-query";
-import { getMyPostByTag, getPostParam } from "../../repository/post/post.param";
+import { useMutation, useQuery } from "react-query";
+import {
+  getMyPostByTagParam,
+  getPostParam,
+  postPostParam,
+} from "../../repository/post/post.param";
 import postRepository from "../../repository/post/post.repository";
 
-export const useGetPopularPosts = () =>
-  useQuery("post/getPopular", () => postRepository.getPopularPosts(), {});
+export const useGetTrendingPosts = () =>
+  useQuery("post/getTrendingPosts", () => postRepository.getTrendingPosts(), {
+    cacheTime: 1000 * 60 * 5,
+    staleTime: 1000 * 60,
+  });
 
 export const useGetPost = ({ id }: getPostParam) =>
-  useQuery(["post/getPost", id], () => postRepository.getPost({ id }));
+  useQuery(["post/getPost", id], () => postRepository.getPost({ id }), {
+    cacheTime: 1000 * 60 * 30,
+    staleTime: 1000 * 60,
+  });
 
 export const useGetMyPosts = () =>
   useQuery("post/getMyPosts", () => postRepository.getMyPosts());
 
-export const useGetMyPostsByTag = ({ tag }: getMyPostByTag) =>
+export const useGetMyPostsByTag = ({ tag }: getMyPostByTagParam) =>
   useQuery("post/getMyPostsByTag", () =>
     postRepository.getMyPostsByTag({ tag })
   );
+
+export const usePostPost = () => {
+  const mutation = useMutation((postData: postPostParam) =>
+    postRepository.postPost(postData)
+  );
+
+  return mutation;
+};

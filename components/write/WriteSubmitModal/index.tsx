@@ -1,4 +1,7 @@
 import { ChangeEvent, Dispatch, SetStateAction } from "react";
+import { useRecoilValue } from "recoil";
+import useImageDnd from "../../../hooks/write/useImageDnd";
+import { writeImageSrcAtom } from "../../../store/write/write.store";
 import { Post } from "../../../types/post/post.type";
 import {
   WriteSubmitModalButton,
@@ -6,6 +9,7 @@ import {
   WriteSubmitModalCancelButton,
   WriteSubmitModalContainer,
   WriteSubmitModalImgLabel,
+  WriteSubmitModalImgPreview,
   WriteSubmitModalOverlay,
   WriteSubmitModalSummaryTextarea,
 } from "./style";
@@ -25,11 +29,34 @@ const WriteSubmitModal = ({
   setIsComplete,
   onSubmitPost,
 }: Props) => {
+  const image = useRecoilValue(writeImageSrcAtom);
+
+  const {
+    dropHandler,
+    dragHandler,
+    dragInHandler,
+    dragOutHandler,
+    onChangeImage,
+    isUploading,
+  } = useImageDnd();
+
   return (
     <>
       <WriteSubmitModalOverlay onClick={() => setIsComplete(false)} />
       <WriteSubmitModalContainer>
-        <WriteSubmitModalImgLabel></WriteSubmitModalImgLabel>
+        <input type="file" id="writeThumbnail" onChange={onChangeImage} />
+        {image === "" ? (
+          <WriteSubmitModalImgLabel
+            htmlFor="writeThumbnail"
+            draggable={true}
+            onDrop={dropHandler}
+            onDragOver={dragHandler}
+            onDragLeave={dragOutHandler}
+            onDragEnter={dragInHandler}
+          ></WriteSubmitModalImgLabel>
+        ) : (
+          <WriteSubmitModalImgPreview src={image} />
+        )}
         <WriteSubmitModalSummaryTextarea
           onChange={onChangeText}
           name="summary"

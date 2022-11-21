@@ -26,6 +26,17 @@ export const WriteSubmitModalContainer = styled.div`
   display: flex;
   flex-direction: column;
   row-gap: 30px;
+
+  input[type="file"] {
+    display: none;
+  }
+`;
+
+export const WriteSubmitModalImgPreview = styled.img`
+  width: 100%;
+  height: 100%;
+  border-radius: 5px;
+  object-fit: cover;
 `;
 
 export const WriteSubmitModalImgLabel = styled.label`
@@ -33,6 +44,10 @@ export const WriteSubmitModalImgLabel = styled.label`
   height: 100%;
   background-color: ${palette.gray[300]};
   border-radius: 5px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
 `;
 
 export const WriteSubmitModalSummaryTextarea = styled.textarea`
