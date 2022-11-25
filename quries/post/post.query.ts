@@ -2,6 +2,7 @@ import { useMutation, useQuery } from "react-query";
 import {
   getMyPostByTagParam,
   getPostParam,
+  postCommentParam,
   postPostParam,
 } from "../../repository/post/post.param";
 import postRepository from "../../repository/post/post.repository";
@@ -29,6 +30,14 @@ export const useGetMyPostsByTag = ({ tag }: getMyPostByTagParam) =>
 export const usePostPost = () => {
   const mutation = useMutation((postData: postPostParam) =>
     postRepository.postPost(postData)
+  );
+
+  return mutation;
+};
+
+export const usePostComment = () => {
+  const mutation = useMutation(({ content, posting_id }: postCommentParam) =>
+    postRepository.postComment({ content, posting_id })
   );
 
   return mutation;

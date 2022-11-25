@@ -9,3 +9,8 @@ export interface getMyPostByTagParam {
 }
 
 export interface postPostParam extends Post {}
+
+export interface postCommentParam {
+  content: string;
+  posting_id: number;
+}

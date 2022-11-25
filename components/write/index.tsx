@@ -13,6 +13,7 @@ import {
 } from "./style";
 import "@toast-ui/editor/dist/toastui-editor.css";
 import WriteSubmitModal from "./WriteSubmitModal";
+import { usePostUpload } from "../../quries/upload/upload.query";
 
 const Write = () => {
   const router = useRouter();
@@ -26,6 +27,8 @@ const Write = () => {
     setIsComplete,
     onSubmitPost,
   } = useWrite();
+
+  const postImageMutation = usePostUpload();
 
   return (
     <WriteContainer>
@@ -46,6 +49,22 @@ const Write = () => {
           ref={editorRef}
           useCommandShortcut={false}
           onChange={onChangeContent}
+          hooks={{
+            addImageBlobHook: (blob, callback) => {
+              const formData = new FormData();
+              formData.append("file", blob);
+              postImageMutation.mutateAsync(
+                { formData },
+                {
+                  onSuccess: (data) => {
+                    console.log(data);
+
+                    callback(data as string, "alt text");
+                  },
+                }
+              );
+            },
+          }}
         />
       </WriteEditorWrap>
 

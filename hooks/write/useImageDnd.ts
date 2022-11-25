@@ -18,6 +18,7 @@ const useImageDnd = () => {
         image = e.target.files[0];
       }
       const formData = new FormData();
+
       formData.append("file", image);
 
       postUploadMutation.mutateAsync(
@@ -25,7 +26,7 @@ const useImageDnd = () => {
         {
           onSuccess: (res) => {
             window.alert("이미지 업로드 성공");
-            setImage(res.data);
+            setImage(res as string);
           },
           onError: () => {
             window.alert("이미지 업로드 실패");

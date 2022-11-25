@@ -10,8 +10,7 @@ const useWrite = () => {
     title: "",
     content: "",
     summary: "",
-    category: [],
-    thumbnail: "",
+    thumbnail_url: "",
   });
 
   const [image, setImage] = useRecoilState(writeImageSrcAtom);
@@ -23,7 +22,7 @@ const useWrite = () => {
   const postPostMutation = usePostPost();
 
   useEffect(() => {
-    setPostData((prev) => ({ ...prev, thumbnail: image }));
+    setPostData((prev) => ({ ...prev, thumbnail_url: image }));
   }, [image]);
 
   useEffect(() => {

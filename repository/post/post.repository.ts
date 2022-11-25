@@ -1,6 +1,11 @@
 import { customAxios } from "../../lib/axios/customAxios";
 import { PostDetail } from "../../types/post/post.type";
-import { getMyPostByTagParam, getPostParam, postPostParam } from "./post.param";
+import {
+  getMyPostByTagParam,
+  getPostParam,
+  postCommentParam,
+  postPostParam,
+} from "./post.param";
 
 class PostRepository {
   public async getTrendingPosts(): Promise<PostDetail[]> {
@@ -24,7 +29,11 @@ class PostRepository {
   }
 
   public async postPost(postData: postPostParam): Promise<void> {
-    await customAxios.post("/post", { ...postData });
+    await customAxios.post("/posting", { ...postData });
+  }
+
+  public async postComment({ content, posting_id }: postCommentParam) {
+    await customAxios.post("/posting/comment", { content, posting_id });
   }
 }
 
