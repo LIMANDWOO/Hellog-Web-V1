@@ -12,7 +12,11 @@ const PageTemplate = ({ children }: Props) => {
 
   return (
     <PageTemplateContainer>
-      {!(asPath === "/write" || asPath === "/auth") && <NavBar />}
+      {!(
+        asPath === "/write" ||
+        asPath === "/auth" ||
+        asPath === "/authloading"
+      ) && <NavBar />}
       <PageTemplateWrap>{children}</PageTemplateWrap>
     </PageTemplateContainer>
   );

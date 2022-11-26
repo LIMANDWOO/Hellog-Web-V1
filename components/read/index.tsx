@@ -39,7 +39,7 @@ const Read = () => {
           }
         />
       </ReadContentWrap>
-      {/* <ReadComment postid={Number(id)} comments={["add", "Adda", "Adsad"]} /> */}
+      <ReadComment postid={Number(id)} comments={[]} />
     </ReadContainer>
   );
 };

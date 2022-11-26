@@ -1,4 +1,4 @@
-import { NavBarLogoWrap, NavBarSectionContainer } from "./style";
+import { NavBarSectionContainer } from "./style";
 import LogoIcon from "../../../../assets/icon/HellogLogo.png";
 import Image from "next/image";
 import Link from "next/link";

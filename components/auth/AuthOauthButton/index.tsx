@@ -19,6 +19,7 @@ const AuthOauthButton = ({
     <AuthOAuthButtonContainer
       fontColor={fontColor}
       backgroundColor={backgroundColor}
+      onClick={() => onClick()}
     >
       <AuthOAuthButtonIcon src={oAuthPlatformIconSrc} />
       {oAuthPlatform} 계정으로 로그인

@@ -34,7 +34,7 @@ export const WriteSubmitModalContainer = styled.div`
 
 export const WriteSubmitModalImgPreview = styled.img`
   width: 100%;
-  height: 100%;
+  height: 246px;
   border-radius: 5px;
   object-fit: cover;
 `;

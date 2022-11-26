@@ -18,11 +18,13 @@ export const ReadCommentItemProfile = styled.img`
 
 export const ReadCommentItemText = styled.p`
   padding: 20px;
+  padding-right: 10px;
   box-sizing: border-box;
   border-radius: 5px;
   background-color: ${({ theme }) => theme.backgroundColor2};
   font-size: 17px;
   line-height: 22px;
   display: flex;
+  column-gap: 20px;
   color: ${({ theme }) => theme.contrast};
 `;
