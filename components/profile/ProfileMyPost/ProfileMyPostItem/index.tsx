@@ -22,7 +22,7 @@ const ProfileMyPostItem = ({ data }: Props) => {
 
   return (
     <ProfileMyPostItemContainer onClick={() => router.push(`/read/${data.id}`)}>
-      <ProfileMyPostItemBanner src={data.thumbnail} />
+      <ProfileMyPostItemBanner src={data.thumbnail_url} />
       <ProfileMyPostItemTitle>{data.title}</ProfileMyPostItemTitle>
       <ProfileMyPostItemSummary>{data.summary}</ProfileMyPostItemSummary>
       <ProfileMyPostItemBottomWrap>
