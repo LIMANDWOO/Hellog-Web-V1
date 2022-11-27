@@ -1,4 +1,4 @@
-import useComment from "../../../../hooks/write/useComment";
+import useComment from "../../../../hooks/post/useCreateComment";
 import {
   ReadCommentFormContainer,
   ReadCommentFormSubmitButton,

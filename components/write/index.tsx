@@ -1,6 +1,6 @@
 import { Editor } from "@toast-ui/react-editor";
 import { useRouter } from "next/router";
-import useWrite from "../../hooks/write/useWrite";
+import useWrite from "../../hooks/post/useWrite";
 import {
   WriteBottomButtonWrap,
   WriteBottomWrap,
@@ -57,8 +57,6 @@ const Write = () => {
                 { formData },
                 {
                   onSuccess: (data) => {
-                    console.log(data);
-
                     callback(data as string, "alt text");
                   },
                 }

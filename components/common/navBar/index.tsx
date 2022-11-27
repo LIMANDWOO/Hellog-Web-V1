@@ -1,8 +1,11 @@
+import { useGetMyMember } from "../../../quries/member/member.query";
 import NavBarProfile from "./NavBarProfile";
 import NavBarSection from "./NavBarSection";
 import { NavBarContainer, NavBarWrap } from "./style";
 
 const NavBar = () => {
+  const { data: serverMyMemberData } = useGetMyMember();
+
   return (
     <NavBarContainer>
       <NavBarWrap>

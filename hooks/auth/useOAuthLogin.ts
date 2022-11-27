@@ -1,6 +1,14 @@
+import { useRouter } from "next/router";
+import {
+  ACCESS_TOKEN_KEY,
+  REFRESH_TOKEN_KEY,
+} from "../../constants/token/token.constant";
+import token from "../../lib/token/token";
 import authRepository from "../../repository/auth/auth.repository";
 
 const useOAuthLogin = () => {
+  const router = useRouter();
+
   const requsetLoginWithGoogle = async (
     email: string,
     picture: string,
@@ -13,8 +21,17 @@ const useOAuthLogin = () => {
         name,
       });
 
-      console.log(data);
-    } catch (error) {}
+      token.setToken(ACCESS_TOKEN_KEY, data.access_token);
+      token.setToken(REFRESH_TOKEN_KEY, data.refresh_token);
+
+      window.alert("로그인 성공");
+
+      router.push("/");
+    } catch (error) {
+      window.alert("로그인 실패");
+
+      router.push("/auth");
+    }
   };
 
   return { requsetLoginWithGoogle };

@@ -1,6 +1,6 @@
 import { ChangeEvent, Dispatch, SetStateAction } from "react";
 import { useRecoilValue } from "recoil";
-import useImageDnd from "../../../hooks/write/useImageDnd";
+import useImageDnd from "../../../hooks/post/useImageDnd";
 import { writeImageSrcAtom } from "../../../store/write/write.store";
 import { Post } from "../../../types/post/post.type";
 import {

@@ -2,24 +2,20 @@ import {
   ACCESS_TOKEN_KEY,
   REFRESH_TOKEN_KEY,
 } from "../../constants/token/token.constant";
-import jwt, { JwtPayload } from "jsonwebtoken";
+import Cookie from "js-cookie";
 
 class Token {
   public getToken(key: string): string | null {
-    return localStorage.getItem(key);
-  }
-
-  public decodeToken(key: string): JwtPayload {
-    return jwt.decode(this.getToken(key)!) as JwtPayload;
+    return Cookie.get(key) || null;
   }
 
   public setToken(key: string, token: string): void {
-    localStorage.setItem(key, token);
+    Cookie.set(key, token);
   }
 
   public removeToken(): void {
-    localStorage.removeItem(ACCESS_TOKEN_KEY);
-    localStorage.removeItem(REFRESH_TOKEN_KEY);
+    Cookie.remove(ACCESS_TOKEN_KEY);
+    Cookie.remove(REFRESH_TOKEN_KEY);
   }
 }
 export default new Token();

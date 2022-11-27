@@ -1,5 +1,7 @@
 import { useMutation, useQuery } from "react-query";
 import {
+  deleteCommentParam,
+  deletePostParam,
   getMyPostByTagParam,
   getPostParam,
   postCommentParam,
@@ -35,6 +37,14 @@ export const usePostPost = () => {
   return mutation;
 };
 
+export const useDeletePost = () => {
+  const mutation = useMutation(({ posting_id }: deletePostParam) =>
+    postRepository.deletePost({ posting_id })
+  );
+
+  return mutation;
+};
+
 export const usePostComment = () => {
   const mutation = useMutation(({ content, posting_id }: postCommentParam) =>
     postRepository.postComment({ content, posting_id })
@@ -42,3 +52,15 @@ export const usePostComment = () => {
 
   return mutation;
 };
+
+export const useDeleteComment = () => {
+  const mutation = useMutation(({ posting_id }: deleteCommentParam) =>
+    postRepository.deleteComment({ posting_id })
+  );
+
+  return mutation;
+};
+
+export const usePostLike = () => {};
+
+export const useDeleteLike = () => {};

@@ -6,7 +6,12 @@ import {
 import { HiDotsVertical } from "@react-icons/all-files/hi/HiDotsVertical";
 import { useState } from "react";
 
-const ReadCommentDropdown = () => {
+interface Props {
+  onModify: () => void;
+  onDelete: () => void;
+}
+
+const ReadCommentDropdown = ({ onModify, onDelete }: Props) => {
   const [open, setOpen] = useState<boolean>(false);
 
   return (
@@ -14,8 +19,12 @@ const ReadCommentDropdown = () => {
       <HiDotsVertical />
       {open && (
         <ReadCommentDropdownItemWrap>
-          <ReadCommentDropdownItem>수정</ReadCommentDropdownItem>
-          <ReadCommentDropdownItem>삭제</ReadCommentDropdownItem>
+          <ReadCommentDropdownItem onClick={() => onModify()}>
+            수정
+          </ReadCommentDropdownItem>
+          <ReadCommentDropdownItem onClick={() => onDelete()}>
+            삭제
+          </ReadCommentDropdownItem>
         </ReadCommentDropdownItemWrap>
       )}
     </ReadCommentDropdownContainer>

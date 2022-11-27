@@ -12,12 +12,10 @@ export interface Member {
   status: MemberStatus;
 }
 
-export interface StudentMember {
+export interface MemberInfo {
   description: string;
   generation: number;
   id: number;
   name: string;
   user: Member;
 }
-
-export interface GuestMember extends Member {}

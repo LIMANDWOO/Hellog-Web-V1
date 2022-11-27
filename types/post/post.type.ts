@@ -1,4 +1,4 @@
-import { Member, StudentMember } from "../member/member.type";
+import { Member, MemberInfo } from "../member/member.type";
 
 export interface Post {
   title: string;
@@ -14,7 +14,7 @@ export interface PostDetail extends Post {
   likeCount: number;
   readonly createdDate: string;
   readonly modifiedDate: string;
-  student: StudentMember;
+  student: MemberInfo;
 }
 
 export interface PostComment {

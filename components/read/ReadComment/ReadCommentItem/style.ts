@@ -28,3 +28,20 @@ export const ReadCommentItemText = styled.p`
   column-gap: 20px;
   color: ${({ theme }) => theme.contrast};
 `;
+
+export const ReadCommentItemModifyInputWrap = styled.form`
+  width: 830px;
+  height: 60px;
+  display: flex;
+`;
+
+export const ReadCommentItemModifyInput = styled.input`
+  width: 100%;
+  height: 100%;
+  font-size: 17px;
+  color: ${({ theme }) => theme.contrast};
+  outline: none;
+  border: 1px solid ${({ theme }) => theme.borderColor};
+  border-radius: 5px;
+  padding: 18px;
+`;

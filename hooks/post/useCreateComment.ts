@@ -6,7 +6,7 @@ interface Param {
   postId: number;
 }
 
-const useComment = ({ postId }: Param) => {
+const useCreateComment = ({ postId }: Param) => {
   const queryClient = useQueryClient();
 
   const [comment, setComment] = useState<string>("");
@@ -24,7 +24,7 @@ const useComment = ({ postId }: Param) => {
       { posting_id: postId, content: comment },
       {
         onSuccess: () => {
-          queryClient.invalidateQueries(`/posting/${postId}`);
+          queryClient.invalidateQueries(["post/getPost", postId]);
           window.alert("댓글 등록 성공");
           setComment("");
         },
@@ -35,6 +35,10 @@ const useComment = ({ postId }: Param) => {
     );
   };
 
+  const onModifyComment = () => {};
+
+  const onDeleteComment = () => {};
+
   return {
     comment,
     setComment,
@@ -42,4 +46,4 @@ const useComment = ({ postId }: Param) => {
   };
 };
 
-export default useComment;
+export default useCreateComment;

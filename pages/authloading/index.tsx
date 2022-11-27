@@ -11,14 +11,12 @@ const AuthLoading: NextPage = () => {
   useEffect(() => {
     console.log(data);
 
-    if (data) {
-      if (data.provider === "google") {
-        requsetLoginWithGoogle(
-          data.user?.email,
-          data.user?.image,
-          data.user?.name
-        );
-      }
+    if (data && data.provider === "google" && data.user) {
+      requsetLoginWithGoogle(
+        data.user?.email as string,
+        data.user?.image as string,
+        data.user?.name as string
+      );
     }
   }, [requsetLoginWithGoogle, data]);
 
