@@ -1,9 +1,18 @@
 import { useRouter } from "next/router";
-import { Post } from "../../../types/post/post.type";
-import { PostCardBanner, PostCardContainer } from "./style";
+import { PostDetail } from "../../../types/post/post.type";
+import {
+  PostCardBanner,
+  PostCardBottomProfileImg,
+  PostCardBottomProfileText,
+  PostCardBottomWrap,
+  PostCardContainer,
+  PostCardDescriptionWrap,
+  PostCardSummary,
+  PostCardTitle,
+} from "./style";
 
 interface Props {
-  data: Post;
+  data: PostDetail;
 }
 
 const PostCard = ({ data }: Props) => {
@@ -11,7 +20,17 @@ const PostCard = ({ data }: Props) => {
 
   return (
     <PostCardContainer onClick={() => router.push(`/read/${data?.id}`)}>
-      <PostCardBanner src={data?.image} />
+      <PostCardBanner src={data?.thumbnail_url} />
+      <PostCardDescriptionWrap>
+        <PostCardTitle>{data.title}</PostCardTitle>
+        <PostCardSummary>{data.summary}</PostCardSummary>
+        <PostCardBottomWrap>
+          <PostCardBottomProfileImg src={data.student.user.profileImage} />
+          <PostCardBottomProfileText>
+            {data.student.name}
+          </PostCardBottomProfileText>
+        </PostCardBottomWrap>
+      </PostCardDescriptionWrap>
     </PostCardContainer>
   );
 };
