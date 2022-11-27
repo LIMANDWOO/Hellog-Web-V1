@@ -1,11 +1,17 @@
 import { useRouter } from "next/router";
 import token from "../../../../../lib/token/token";
+import { MemberRole } from "../../../../../types/member/member.type";
 import {
   NavBarProfileDropdownContainer,
   NavBarProfileDropdownItemContainer,
 } from "./style";
 
-const NavBarProfileDropdown = () => {
+interface Props {
+  memberId: number;
+  role: MemberRole;
+}
+
+const NavBarProfileDropdown = ({ memberId, role }: Props) => {
   const router = useRouter();
 
   const logout = () => {
@@ -13,15 +19,20 @@ const NavBarProfileDropdown = () => {
     router.push("/auth");
   };
 
-  const memberId = 1;
-
   return (
     <NavBarProfileDropdownContainer>
       <NavBarProfileDropdownItemContainer
-        onClick={() => router.push(`/profile/${memberId}?tag=전체조회`)}
+        onClick={() => router.push(`/profile/${memberId}`)}
       >
         내 프로필
       </NavBarProfileDropdownItemContainer>
+      {role === "ADMIN" && (
+        <NavBarProfileDropdownItemContainer
+          onClick={() => router.push(`/setting/${memberId}`)}
+        >
+          공지사항 작성
+        </NavBarProfileDropdownItemContainer>
+      )}
       <NavBarProfileDropdownItemContainer
         onClick={() => router.push(`/setting/${memberId}`)}
       >

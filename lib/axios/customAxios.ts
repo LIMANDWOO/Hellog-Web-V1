@@ -12,3 +12,7 @@ export const customAxios = axios.create({
     [REQUEST_TOKEN_KEY]: `Bearer ${token.getToken(ACCESS_TOKEN_KEY)}`,
   },
 });
+
+export const customAxiosSetAccessToken = (token: string) => {
+  customAxios.defaults.headers[REQUEST_TOKEN_KEY] = `Bearer ${token}`;
+};

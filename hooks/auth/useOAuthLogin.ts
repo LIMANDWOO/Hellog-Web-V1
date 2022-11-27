@@ -3,6 +3,7 @@ import {
   ACCESS_TOKEN_KEY,
   REFRESH_TOKEN_KEY,
 } from "../../constants/token/token.constant";
+import { customAxiosSetAccessToken } from "../../lib/axios/customAxios";
 import token from "../../lib/token/token";
 import authRepository from "../../repository/auth/auth.repository";
 
@@ -23,6 +24,8 @@ const useOAuthLogin = () => {
 
       token.setToken(ACCESS_TOKEN_KEY, data.access_token);
       token.setToken(REFRESH_TOKEN_KEY, data.refresh_token);
+
+      customAxiosSetAccessToken(data.access_token);
 
       window.alert("로그인 성공");
 

@@ -1,3 +1,5 @@
+import { PostDetail } from "../post/post.type";
+
 export type MemberStatus = "ACTIVE" | "BANNED";
 
 export type MemberRole = "ADMIN" | "STUDENT" | "GUEST";
@@ -18,4 +20,5 @@ export interface MemberInfo {
   id: number;
   name: string;
   user: Member;
+  postings : PostDetail[]
 }

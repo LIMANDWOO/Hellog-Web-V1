@@ -4,6 +4,7 @@ import { useState } from "react";
 import { useQueryClient } from "react-query";
 import useModifyComment from "../../../../hooks/post/useModifyComment";
 import { useDeleteComment } from "../../../../quries/post/post.query";
+import { PostComment } from "../../../../types/post/post.type";
 import {
   ReadCommentItemContainer,
   ReadCommentItemModifyInput,
@@ -15,7 +16,11 @@ const ReadCommentDropdown = dynamic(() => import("./ReadCommentDropdown"), {
   ssr: false,
 });
 
-const ReadCommentItem = () => {
+interface Props {
+  data: PostComment;
+}
+
+const ReadCommentItem = ({ data }: Props) => {
   const router = useRouter();
 
   const queryClient = useQueryClient();
@@ -25,9 +30,8 @@ const ReadCommentItem = () => {
 
   const { comment, tempComment, onChangeModifyComment, onSubmitModifyComment } =
     useModifyComment({
-      prevComment:
-        "안녕하세요 ㅋㅋ안녕하세요 ㅋㅋ안녕하세요 ㅋㅋ안녕하세요 ㅋㅋ안녕하세요 ㅋㅋ안녕하세요 ㅋㅋ안녕하세요 ㅋㅋ안녕하세요",
-      commentId: 1,
+      prevComment: data.content,
+      commentId: data.id,
       setIsModify,
     });
 

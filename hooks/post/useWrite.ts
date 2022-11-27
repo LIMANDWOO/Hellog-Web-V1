@@ -1,11 +1,16 @@
 import { Editor } from "@toast-ui/react-editor";
+import { useRouter } from "next/router";
 import { ChangeEvent, useEffect, useRef, useState } from "react";
 import { useRecoilState } from "recoil";
+import { ACCESS_TOKEN_KEY } from "../../constants/token/token.constant";
+import token from "../../lib/token/token";
 import { usePostPost } from "../../quries/post/post.query";
 import { writeImageSrcAtom } from "../../store/write/write.store";
 import { Post } from "../../types/post/post.type";
 
 const useWrite = () => {
+  const router = useRouter();
+
   const [postData, setPostData] = useState<Post>({
     title: "",
     content: "",
@@ -71,10 +76,12 @@ const useWrite = () => {
       window.alert("썸네일을 추가해주세요");
       return;
     }
+
     postPostMutation.mutateAsync(postData, {
       onSuccess: () => {
         window.alert("게시물 등록 성공");
         setImage("");
+        router.push("/");
       },
       onError: () => {
         window.alert("게시물 등록 실패");

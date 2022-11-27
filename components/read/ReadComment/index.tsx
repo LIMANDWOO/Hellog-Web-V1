@@ -13,9 +13,9 @@ const ReadComment = ({ postid, comments }: Props) => {
     <ReadCommentContainer>
       <ReadCommentForm postid={postid} />
       <ReadCommentItemWrap>
-        <ReadCommentItem />
-        <ReadCommentItem />
-        <ReadCommentItem />
+        {comments?.map((comment) => (
+          <ReadCommentItem data={comment} key={comment.id} />
+        ))}
       </ReadCommentItemWrap>
     </ReadCommentContainer>
   );

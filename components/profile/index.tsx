@@ -12,30 +12,27 @@ import {
   ProfileWrap,
 } from "./style";
 import ProfileMyLink from "./ProfileMyLink";
+import { useGetMyMember } from "../../quries/member/member.query";
 
 const Proflie = () => {
+  const { data: serverMyMemberData } = useGetMyMember();
+
   return (
     <ProfileContainer>
       <ProfileHeaderWrap>
-        <ProfileHeaderLeftWrap>
-          <ProfileMyLink />
-        </ProfileHeaderLeftWrap>
+        <ProfileHeaderLeftWrap>{/* <ProfileMyLink /> */}</ProfileHeaderLeftWrap>
         <ProfileHeaderMiddleWrap>
-          <ProfileHeaderImg
-            src={
-              "https://velog.velcdn.com/images/ldh3907/profile/0f7e6e83-5dac-4dd2-8893-4a8a741810e1/social.jpeg"
-            }
-          />
-          <ProfileHeaderName>임동현</ProfileHeaderName>
+          <ProfileHeaderImg src={serverMyMemberData?.user.profileImage} />
+          <ProfileHeaderName>{serverMyMemberData?.name}</ProfileHeaderName>
           <ProfileHeaderDescription>
-            혁신적인 FE를 선호합니다
+            {serverMyMemberData?.description}
           </ProfileHeaderDescription>
         </ProfileHeaderMiddleWrap>
         <ProfileHeaderRightWrap></ProfileHeaderRightWrap>
       </ProfileHeaderWrap>
       <ProfileWrap>
-        <ProfileCategory />
-        <ProfileMyPost />
+        {/* <ProfileCategory /> */}
+        <ProfileMyPost data={serverMyMemberData?.postings!} />
       </ProfileWrap>
     </ProfileContainer>
   );

@@ -15,6 +15,7 @@ export interface PostDetail extends Post {
   readonly createdDate: string;
   readonly modifiedDate: string;
   student: MemberInfo;
+  liked: boolean;
 }
 
 export interface PostComment {

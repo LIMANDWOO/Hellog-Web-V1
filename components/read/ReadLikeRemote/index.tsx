@@ -1,5 +1,11 @@
+import { ReadLikeRemoteContainer, ReadLikeRemoteLikeButton } from "./style";
+
 const ReadLikeRemote = () => {
-  return <div></div>;
+  return (
+    <ReadLikeRemoteContainer>
+      <ReadLikeRemoteLikeButton isLike={true}></ReadLikeRemoteLikeButton>
+    </ReadLikeRemoteContainer>
+  );
 };
 
 export default ReadLikeRemote;

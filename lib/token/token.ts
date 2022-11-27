@@ -5,8 +5,8 @@ import {
 import Cookie from "js-cookie";
 
 class Token {
-  public getToken(key: string): string | null {
-    return Cookie.get(key) || null;
+  public getToken(key: string): string | undefined {
+    return Cookie.get(key);
   }
 
   public setToken(key: string, token: string): void {

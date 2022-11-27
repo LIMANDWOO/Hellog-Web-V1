@@ -9,8 +9,6 @@ const AuthLoading: NextPage = () => {
   const { requsetLoginWithGoogle } = useOAuthLogin();
 
   useEffect(() => {
-    console.log(data);
-
     if (data && data.provider === "google" && data.user) {
       requsetLoginWithGoogle(
         data.user?.email as string,
