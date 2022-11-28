@@ -18,6 +18,7 @@ export const MainNoticeItem = styled.div`
   cursor: pointer;
   display: flex;
   flex-direction: column;
+  transition: all 0.3s ease;
 
   &:hover {
     box-shadow: 4px 1.2rem 3rem 6px rgb(0 0 0 / 18%);

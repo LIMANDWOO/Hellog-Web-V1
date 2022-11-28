@@ -1,6 +1,6 @@
 import styled from "styled-components";
 
-export const ReadDropdownContainer = styled.div`
+export const MenuDropdownContainer = styled.div`
   width: 40px;
   height: 40px;
   font-size: 40px;
@@ -12,7 +12,7 @@ export const ReadDropdownContainer = styled.div`
   cursor: pointer;
 `;
 
-export const ReadDropdownItemWrap = styled.div`
+export const MenuDropdownItemWrap = styled.div`
   width: 110px;
   display: flex;
   flex-direction: column;
@@ -24,7 +24,7 @@ export const ReadDropdownItemWrap = styled.div`
   overflow: hidden;
 `;
 
-export const ReadDropdownItem = styled.div`
+export const MenuDropdownItem = styled.div`
   width: 100%;
   height: 50px;
   background-color: ${({ theme }) => theme.backgroundColor2};

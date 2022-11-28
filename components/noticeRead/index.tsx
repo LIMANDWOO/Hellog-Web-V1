@@ -7,7 +7,7 @@ import {
   useGetNotice,
 } from "../../quries/notice/notice.query";
 import dateTransform from "../../util/transform/dateTransform";
-import NoticeReadDropdown from "./NoticeReadDropdown";
+import MenuDropdown from "../common/MenuDropdown";
 import {
   NoticeReadContainer,
   NoticeReadProfileText,
@@ -36,7 +36,7 @@ const NoticeRead = () => {
       <NoticeReadTitleWrap>
         <NoticeReadTitle>{serverNoticeData?.title}</NoticeReadTitle>
         {serverMyMemberData?.id === serverNoticeData?.user.id && (
-          <NoticeReadDropdown
+          <MenuDropdown
             onDelete={() => {
               deleteNoticeMutation.mutate(
                 { notice_id: Number(router.query.id) },

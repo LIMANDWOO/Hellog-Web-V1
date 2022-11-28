@@ -5,8 +5,8 @@ import TimeCounting from "time-counting";
 import { useGetMyMember } from "../../quries/member/member.query";
 import { useDeletePost, useGetPost } from "../../quries/post/post.query";
 import dateTransform from "../../util/transform/dateTransform";
+import MenuDropdown from "../common/MenuDropdown";
 import ReadComment from "./ReadComment";
-import ReadDropdown from "./ReadDropdown";
 import ReadLikeRemote from "./ReadLikeRemote";
 import {
   ReadContainer,
@@ -46,7 +46,7 @@ const Read = () => {
         <ReadContentTitleWrap>
           <ReadContentTitle>{serverPostData?.title}</ReadContentTitle>
           {serverMyMemberData?.id === serverPostData?.student.id && (
-            <ReadDropdown
+            <MenuDropdown
               onDelete={() => {
                 deletePostMutation.mutate(
                   { posting_id: Number(id) },

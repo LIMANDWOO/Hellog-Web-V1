@@ -21,6 +21,7 @@ export const editorStyle = css`
       margin-bottom: 25px;
       margin-top: 50px;
       font-weight: bold;
+      color: ${({ theme }) => theme.contrast};
     }
     h1 {
       font-size: 44px;
@@ -43,9 +44,10 @@ export const editorStyle = css`
     }
 
     p {
-      font-size: 1.125rem;
+      font-size: 22px;
       margin: 10px 0px;
       line-height: 160%;
+      color: ${({ theme }) => theme.contrast};
     }
 
     th {

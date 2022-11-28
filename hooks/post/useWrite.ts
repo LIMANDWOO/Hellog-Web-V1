@@ -82,6 +82,7 @@ const useWrite = () => {
       onSuccess: () => {
         window.alert("게시물 등록 성공");
         setImage("");
+        setIsComplete(false);
         router.push("/");
       },
       onError: () => {
