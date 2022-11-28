@@ -9,6 +9,7 @@ import {
   postCommentParam,
   postLikeParam,
   postPostParam,
+  putPostParam,
 } from "./post.param";
 
 class PostRepository {
@@ -34,6 +35,22 @@ class PostRepository {
 
   public async postPost(postData: postPostParam): Promise<void> {
     await customAxios.post("/posting", { ...postData });
+  }
+
+  public async putPost({
+    title,
+    content,
+    thumbnail_url,
+    summary,
+    id,
+  }: putPostParam): Promise<void> {
+    await customAxios.put("/posting", {
+      title,
+      content,
+      thumbnail_url,
+      summary,
+      id,
+    });
   }
 
   public async deletePost({ posting_id }: deletePostParam): Promise<void> {

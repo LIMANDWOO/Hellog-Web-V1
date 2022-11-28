@@ -3,7 +3,10 @@ import { useRouter } from "next/router";
 import { ChangeEvent, useEffect, useRef, useState } from "react";
 import { useRecoilState } from "recoil";
 import { usePostPost } from "../../quries/post/post.query";
-import { writeImageSrcAtom } from "../../store/write/write.store";
+import {
+  writeImageSrcAtom,
+  writeIsCompleteAtom,
+} from "../../store/write/write.store";
 import { Post } from "../../types/post/post.type";
 
 const useWrite = () => {
@@ -18,7 +21,7 @@ const useWrite = () => {
 
   const [image, setImage] = useRecoilState(writeImageSrcAtom);
 
-  const [isComplete, setIsComplete] = useState(false);
+  const [, setIsComplete] = useRecoilState(writeIsCompleteAtom);
 
   const editorRef = useRef<Editor>(null);
 
@@ -93,8 +96,6 @@ const useWrite = () => {
     onCompletePost,
     onChangeContent,
     onChangeText,
-    isComplete,
-    setIsComplete,
     onSubmitPost,
   };
 };

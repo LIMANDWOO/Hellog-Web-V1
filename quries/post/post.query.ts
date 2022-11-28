@@ -8,6 +8,7 @@ import {
   postCommentParam,
   postLikeParam,
   postPostParam,
+  putPostParam,
 } from "../../repository/post/post.param";
 import postRepository from "../../repository/post/post.repository";
 
@@ -34,6 +35,15 @@ export const useGetMyPostsByTag = ({ tag }: getMyPostByTagParam) =>
 export const usePostPost = () => {
   const mutation = useMutation((postData: postPostParam) =>
     postRepository.postPost(postData)
+  );
+
+  return mutation;
+};
+
+export const usePutPost = () => {
+  const mutation = useMutation(
+    ({ title, content, thumbnail_url, summary, id }: putPostParam) =>
+      postRepository.putPost({ title, content, thumbnail_url, summary, id })
   );
 
   return mutation;

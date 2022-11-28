@@ -12,11 +12,19 @@ export const getServerSideProps = async () => {
   const queryClient = new QueryClient();
 
   await Promise.all([
-    queryClient.prefetchQuery("post/getPopular", () =>
-      postRepository.getTrendingPosts()
+    queryClient.prefetchQuery(
+      "post/getPopular",
+      () => postRepository.getTrendingPosts(),
+      {
+        cacheTime: 1000 * 60,
+      }
     ),
-    queryClient.prefetchQuery("notice/getNotices", () =>
-      noticeRepository.getNotices()
+    queryClient.prefetchQuery(
+      "notice/getNotices",
+      () => noticeRepository.getNotices(),
+      {
+        cacheTime: 1000 * 60,
+      }
     ),
   ]);
 

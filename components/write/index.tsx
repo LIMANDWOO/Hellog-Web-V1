@@ -14,19 +14,39 @@ import {
 import "@toast-ui/editor/dist/toastui-editor.css";
 import WriteSubmitModal from "./WriteSubmitModal";
 import { usePostUpload } from "../../quries/upload/upload.query";
+import useModifyPost from "../../hooks/post/useModifyPost";
+import { useState } from "react";
+import { useRecoilValue } from "recoil";
+import { writeIsCompleteAtom } from "../../store/write/write.store";
 
 const Write = () => {
   const router = useRouter();
+
+  const [isModify, setIsModify] = useState<boolean>(
+    router.query.id ? true : false
+  );
+
+  const isComplete = useRecoilValue(writeIsCompleteAtom);
+
   const {
     editorRef,
     postData,
     onChangeContent,
     onCompletePost,
     onChangeText,
-    isComplete,
-    setIsComplete,
     onSubmitPost,
   } = useWrite();
+
+  const {
+    modifyEditorRef,
+    modifyPostData,
+    onModifyText,
+    onModifyContent,
+    onCompleteModifyPost,
+    onSubmitModifyPost,
+  } = useModifyPost({
+    posting_id: Number(router.query.id),
+  });
 
   const postImageMutation = usePostUpload();
 
@@ -35,8 +55,8 @@ const Write = () => {
       <WriteHeaderWrap>
         <WriteHeaderTitleInput
           placeholder="제목을 입력해주세요"
-          value={postData.title}
-          onChange={onChangeText}
+          value={isModify ? modifyPostData.title : postData.title}
+          onChange={isModify ? onModifyText : onChangeText}
           name="title"
         />
       </WriteHeaderWrap>
@@ -46,9 +66,9 @@ const Write = () => {
           previewStyle="vertical"
           height="740px"
           initialEditType="markdown"
-          ref={editorRef}
+          ref={isModify ? modifyEditorRef : editorRef}
           useCommandShortcut={false}
-          onChange={onChangeContent}
+          onChange={isModify ? onModifyContent : onChangeContent}
           hooks={{
             addImageBlobHook: (blob, callback) => {
               const formData = new FormData();
@@ -71,17 +91,18 @@ const Write = () => {
           <WriteExitButton onClick={() => router.back()}>
             돌아가기
           </WriteExitButton>
-          <WriteSubmitButton onClick={onCompletePost}>
+          <WriteSubmitButton
+            onClick={isModify ? onCompleteModifyPost : onCompletePost}
+          >
             게시하기
           </WriteSubmitButton>
         </WriteBottomButtonWrap>
       </WriteBottomWrap>
       {isComplete && (
         <WriteSubmitModal
-          postData={postData}
-          onChangeText={onChangeText}
-          setIsComplete={setIsComplete}
-          onSubmitPost={onSubmitPost}
+          postData={isModify ? modifyPostData : postData}
+          onChangeText={isModify ? onModifyText : onChangeText}
+          onSubmitPost={isModify ? onSubmitModifyPost : onSubmitPost}
         />
       )}
     </WriteContainer>

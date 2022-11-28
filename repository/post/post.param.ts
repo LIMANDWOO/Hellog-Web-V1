@@ -10,6 +10,10 @@ export interface getMyPostByTagParam {
 
 export interface postPostParam extends Post {}
 
+export interface putPostParam extends Post {
+  id: number;
+}
+
 export interface deletePostParam {
   posting_id: number;
 }

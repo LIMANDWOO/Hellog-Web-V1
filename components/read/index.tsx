@@ -62,7 +62,7 @@ const Read = () => {
                   }
                 );
               }}
-              onModify={() => {}}
+              onModify={() => router.push(`/write/modify/${id}`)}
             />
           )}
         </ReadContentTitleWrap>

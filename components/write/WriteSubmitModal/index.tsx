@@ -1,7 +1,10 @@
 import { ChangeEvent, Dispatch, SetStateAction } from "react";
-import { useRecoilValue } from "recoil";
+import { useRecoilState, useRecoilValue } from "recoil";
 import useImageDnd from "../../../hooks/post/useImageDnd";
-import { writeImageSrcAtom } from "../../../store/write/write.store";
+import {
+  writeImageSrcAtom,
+  writeIsCompleteAtom,
+} from "../../../store/write/write.store";
 import { Post } from "../../../types/post/post.type";
 import {
   WriteSubmitModalButton,
@@ -19,19 +22,13 @@ import { MdCameraAlt } from "@react-icons/all-files/md/MdCameraAlt";
 
 interface Props {
   postData: Post;
-  setIsComplete: Dispatch<SetStateAction<boolean>>;
   onChangeText: (
     e: ChangeEvent<HTMLInputElement> | ChangeEvent<HTMLTextAreaElement>
   ) => void;
   onSubmitPost: () => void;
 }
 
-const WriteSubmitModal = ({
-  postData,
-  onChangeText,
-  setIsComplete,
-  onSubmitPost,
-}: Props) => {
+const WriteSubmitModal = ({ postData, onChangeText, onSubmitPost }: Props) => {
   const image = useRecoilValue(writeImageSrcAtom);
 
   const {
@@ -42,6 +39,8 @@ const WriteSubmitModal = ({
     onChangeImage,
     isUploading,
   } = useImageDnd();
+
+  const [, setIsComplete] = useRecoilState(writeIsCompleteAtom);
 
   return (
     <>
@@ -77,7 +76,7 @@ const WriteSubmitModal = ({
           <WriteSubmitModalCancelButton onClick={() => setIsComplete(false)}>
             돌아가기
           </WriteSubmitModalCancelButton>
-          <WriteSubmitModalButton onClick={onSubmitPost}>
+          <WriteSubmitModalButton onClick={onSubmitPost} disabled={isUploading}>
             게시하기
           </WriteSubmitModalButton>
         </WriteSubmitModalButtonWrap>

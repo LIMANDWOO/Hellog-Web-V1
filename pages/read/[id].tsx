@@ -14,8 +14,12 @@ export const getServerSideProps = withAuth(
     const queryClient = new QueryClient();
 
     await Promise.all([
-      queryClient.prefetchQuery(["post/getPost", query.id], () =>
-        postRepository.getPost({ id: Number(query.id) })
+      queryClient.prefetchQuery(
+        ["post/getPost", query.id],
+        () => postRepository.getPost({ id: Number(query.id) }),
+        {
+          cacheTime: 1000 * 30,
+        }
       ),
     ]);
 
