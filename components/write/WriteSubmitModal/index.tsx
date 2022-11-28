@@ -9,10 +9,13 @@ import {
   WriteSubmitModalCancelButton,
   WriteSubmitModalContainer,
   WriteSubmitModalImgLabel,
+  WriteSubmitModalImgLabelIcon,
+  WriteSubmitModalImgLabelText,
   WriteSubmitModalImgPreview,
   WriteSubmitModalOverlay,
   WriteSubmitModalSummaryTextarea,
 } from "./style";
+import { MdCameraAlt } from "@react-icons/all-files/md/MdCameraAlt";
 
 interface Props {
   postData: Post;
@@ -53,7 +56,14 @@ const WriteSubmitModal = ({
             onDragOver={dragHandler}
             onDragLeave={dragOutHandler}
             onDragEnter={dragInHandler}
-          ></WriteSubmitModalImgLabel>
+          >
+            <WriteSubmitModalImgLabelIcon>
+              <MdCameraAlt />
+            </WriteSubmitModalImgLabelIcon>
+            <WriteSubmitModalImgLabelText>
+              이미지를 등록해주세요
+            </WriteSubmitModalImgLabelText>
+          </WriteSubmitModalImgLabel>
         ) : (
           <WriteSubmitModalImgPreview src={image} />
         )}

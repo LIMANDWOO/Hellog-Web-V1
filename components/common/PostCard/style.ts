@@ -24,6 +24,7 @@ export const PostCardBanner = styled.img`
   min-height: 160px;
   object-fit: cover;
   background-color: black;
+  border-bottom: 1px solid ${({ theme }) => theme.borderColor};
 `;
 
 export const PostCardDescriptionWrap = styled.div`
@@ -52,12 +53,19 @@ export const PostCardBottomWrap = styled.div`
   width: 100%;
   display: flex;
   align-items: center;
+  justify-content: space-between;
+  column-gap: 10px;
+`;
+
+export const PostCardBottomProfileWrap = styled.div`
+  display: flex;
+  align-items: center;
   column-gap: 10px;
 `;
 
 export const PostCardBottomProfileImg = styled.img`
-  width: 40px;
-  height: 40px;
+  width: 30px;
+  height: 30px;
   border-radius: 100%;
   object-fit: cover;
   background-color: black;
@@ -65,5 +73,27 @@ export const PostCardBottomProfileImg = styled.img`
 
 export const PostCardBottomProfileText = styled.p`
   font-size: 18px;
+  color: ${({ theme }) => theme.contrast};
+`;
+
+export const PostCardBottomLikeCountWrap = styled.div`
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  row-gap: 3px;
+`;
+
+export const PostCardBottomLikeCountIcon = styled.div`
+  width: 20px;
+  height: 20px;
+  font-size: 20px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: ${({ theme }) => theme.contrast};
+`;
+
+export const PostCardBottomLikeCountText = styled.span`
+  font-size: 10px;
   color: ${({ theme }) => theme.contrast};
 `;

@@ -1,10 +1,12 @@
 import { useMutation, useQuery } from "react-query";
 import {
   deleteCommentParam,
+  deleteLikeParam,
   deletePostParam,
   getMyPostByTagParam,
   getPostParam,
   postCommentParam,
+  postLikeParam,
   postPostParam,
 } from "../../repository/post/post.param";
 import postRepository from "../../repository/post/post.repository";
@@ -18,7 +20,7 @@ export const useGetTrendingPosts = () =>
 export const useGetPost = ({ id }: getPostParam) =>
   useQuery(["post/getPost", id], () => postRepository.getPost({ id }), {
     cacheTime: 1000 * 60 * 30,
-    staleTime: 1000 * 60,
+    staleTime: 1000 * 30,
   });
 
 export const useGetMyPosts = () =>
@@ -61,6 +63,18 @@ export const useDeleteComment = () => {
   return mutation;
 };
 
-export const usePostLike = () => {};
+export const usePostLike = () => {
+  const mutation = useMutation(({ posting_id }: postLikeParam) =>
+    postRepository.postLike({ posting_id })
+  );
 
-export const useDeleteLike = () => {};
+  return mutation;
+};
+
+export const useDeleteLike = () => {
+  const mutation = useMutation(({ posting_id }: deleteLikeParam) =>
+    postRepository.deleteLike({ posting_id })
+  );
+
+  return mutation;
+};

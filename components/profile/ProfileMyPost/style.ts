@@ -6,4 +6,5 @@ export const ProfileMyPostContaienr = styled.div`
   flex-direction: column;
   margin: 0px auto;
   cursor: pointer;
+  padding-bottom: 60px;
 `;

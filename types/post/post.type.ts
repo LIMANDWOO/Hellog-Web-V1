@@ -11,7 +11,7 @@ export interface PostDetail extends Post {
   comments: PostComment[];
   readonly id: number;
   status: "ACTIVE" | "BANNED";
-  likeCount: number;
+  like_count: number;
   readonly createdDate: string;
   readonly modifiedDate: string;
   student: MemberInfo;

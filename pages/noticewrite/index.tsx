@@ -1,6 +1,10 @@
 import { NextPage } from "next";
-import NoticeWrite from "../../components/noticeWrite";
+import dynamic from "next/dynamic";
 import withAuth from "../../HOF/withAuthHOF";
+
+const NoticeWrite = dynamic(() => import("../../components/noticeWrite"), {
+  ssr: false,
+});
 
 const NoticeWritePage: NextPage = () => {
   return <NoticeWrite />;

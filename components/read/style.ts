@@ -6,6 +6,7 @@ export const ReadContainer = styled.div`
   margin: 0px auto;
   border-radius: 5px;
   padding-bottom: 60px;
+  position: relative;
 `;
 
 export const ReadContentWrap = styled.div`

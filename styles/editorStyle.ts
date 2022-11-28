@@ -1,5 +1,6 @@
 import { css } from "styled-components";
 import { palette } from "./palette";
+import "@toast-ui/editor/dist/toastui-editor.css";
 
 export const editorStyle = css`
   .toastui-editor-defaultUI-toolbar {
@@ -19,6 +20,7 @@ export const editorStyle = css`
       border: 0px;
       margin-bottom: 25px;
       margin-top: 50px;
+      font-weight: bold;
     }
     h1 {
       font-size: 44px;
@@ -42,6 +44,8 @@ export const editorStyle = css`
 
     p {
       font-size: 1.125rem;
+      margin: 10px 0px;
+      line-height: 160%;
     }
 
     th {

@@ -1,4 +1,5 @@
 import { GetServerSideProps, GetServerSidePropsContext } from "next";
+import cookies from "next-cookies";
 import { ACCESS_TOKEN_KEY } from "../constants/token/token.constant";
 import { customAxiosSetAccessToken } from "../lib/axios/customAxios";
 import memberRepository from "../repository/member/member.repository";
@@ -6,20 +7,11 @@ import { MemberRole } from "../types/member/member.type";
 
 const withAuth = (role: MemberRole, getServerSideProps: GetServerSideProps) => {
   return async (context: GetServerSidePropsContext) => {
-    const cookieItems = context.req.headers.cookie?.split(";");
+    console.log();
 
-    let accessToken = "";
+    const accessToken = cookies(context)[ACCESS_TOKEN_KEY];
 
-    cookieItems?.some((item) => {
-      item = item.replace(" ", "");
-      const key = item.split("=");
-      if (key[0] === ACCESS_TOKEN_KEY) {
-        accessToken = key[1];
-        return true;
-      }
-    });
-
-    if (accessToken === "") {
+    if (accessToken === undefined) {
       return {
         redirect: {
           destination: "/auth",

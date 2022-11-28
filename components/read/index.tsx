@@ -4,6 +4,7 @@ import { useQueryClient } from "react-query";
 import TimeCounting from "time-counting";
 import { useGetMyMember } from "../../quries/member/member.query";
 import { useDeletePost, useGetPost } from "../../quries/post/post.query";
+import dateTransform from "../../util/transform/dateTransform";
 import ReadComment from "./ReadComment";
 import ReadDropdown from "./ReadDropdown";
 import ReadLikeRemote from "./ReadLikeRemote";
@@ -36,7 +37,11 @@ const Read = () => {
 
   return (
     <ReadContainer>
-      <ReadLikeRemote />
+      <ReadLikeRemote
+        liked={serverPostData?.liked!}
+        posting_id={Number(id)}
+        prevLikeCount={serverPostData?.like_count!}
+      />
       <ReadContentWrap>
         <ReadContentTitleWrap>
           <ReadContentTitle>{serverPostData?.title}</ReadContentTitle>
@@ -64,7 +69,9 @@ const Read = () => {
         <ReadContentProfileWrap>
           <ReadContentProfileText>
             {serverPostData?.student.name} ∙{" "}
-            {TimeCounting(serverPostData?.createdDate!, { lang: "ko" })}
+            {TimeCounting(dateTransform.format(serverPostData?.createdDate!), {
+              lang: "ko",
+            })}
           </ReadContentProfileText>
         </ReadContentProfileWrap>
         <ReadContentThumbnail src={serverPostData?.thumbnail_url} />

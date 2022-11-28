@@ -2,8 +2,6 @@ import { Editor } from "@toast-ui/react-editor";
 import { useRouter } from "next/router";
 import { ChangeEvent, useEffect, useRef, useState } from "react";
 import { useRecoilState } from "recoil";
-import { ACCESS_TOKEN_KEY } from "../../constants/token/token.constant";
-import token from "../../lib/token/token";
 import { usePostPost } from "../../quries/post/post.query";
 import { writeImageSrcAtom } from "../../store/write/write.store";
 import { Post } from "../../types/post/post.type";

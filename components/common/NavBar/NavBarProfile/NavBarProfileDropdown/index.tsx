@@ -21,14 +21,16 @@ const NavBarProfileDropdown = ({ memberId, role }: Props) => {
 
   return (
     <NavBarProfileDropdownContainer>
-      <NavBarProfileDropdownItemContainer
-        onClick={() => router.push(`/profile/${memberId}`)}
-      >
-        내 프로필
-      </NavBarProfileDropdownItemContainer>
+      {role !== "GUEST" && (
+        <NavBarProfileDropdownItemContainer
+          onClick={() => router.push(`/profile/${memberId}`)}
+        >
+          내 프로필
+        </NavBarProfileDropdownItemContainer>
+      )}
       {role === "ADMIN" && (
         <NavBarProfileDropdownItemContainer
-          onClick={() => router.push(`/setting/${memberId}`)}
+          onClick={() => router.push(`/noticewrite`)}
         >
           공지사항 작성
         </NavBarProfileDropdownItemContainer>

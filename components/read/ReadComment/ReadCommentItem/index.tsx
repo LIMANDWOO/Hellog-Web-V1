@@ -3,6 +3,7 @@ import { useRouter } from "next/router";
 import { useState } from "react";
 import { useQueryClient } from "react-query";
 import useModifyComment from "../../../../hooks/post/useModifyComment";
+import { useGetMyMember } from "../../../../quries/member/member.query";
 import { useDeleteComment } from "../../../../quries/post/post.query";
 import { PostComment } from "../../../../types/post/post.type";
 import {
@@ -17,10 +18,11 @@ const ReadCommentDropdown = dynamic(() => import("./ReadCommentDropdown"), {
 });
 
 interface Props {
+  userId: number;
   data: PostComment;
 }
 
-const ReadCommentItem = ({ data }: Props) => {
+const ReadCommentItem = ({ userId, data }: Props) => {
   const router = useRouter();
 
   const queryClient = useQueryClient();
@@ -37,7 +39,7 @@ const ReadCommentItem = ({ data }: Props) => {
 
   return (
     <ReadCommentItemContainer>
-      <ReadCommentItemProfile />
+      <ReadCommentItemProfile src={data.user.profileImage} />
       <ReadCommentItemText>
         {isModify ? (
           <ReadCommentItemModifyInputWrap onSubmit={onSubmitModifyComment}>
@@ -49,28 +51,30 @@ const ReadCommentItem = ({ data }: Props) => {
         ) : (
           <>{comment}</>
         )}
-        <ReadCommentDropdown
-          onModify={() => setIsModify(true)}
-          onDelete={() => {
-            deleteCommentMutation.mutateAsync(
-              {
-                posting_id: Number(router.query.id),
-              },
-              {
-                onSuccess: () => {
-                  queryClient.invalidateQueries([
-                    "post/getPost",
-                    Number(router.query.id),
-                  ]);
-                  window.alert("댓글 삭제 성공");
+        {userId === data.user.id && (
+          <ReadCommentDropdown
+            onModify={() => setIsModify(true)}
+            onDelete={() => {
+              deleteCommentMutation.mutateAsync(
+                {
+                  posting_id: Number(router.query.id),
                 },
-                onError: () => {
-                  window.alert("댓글 삭제 실패");
-                },
-              }
-            );
-          }}
-        />
+                {
+                  onSuccess: () => {
+                    queryClient.invalidateQueries([
+                      "post/getPost",
+                      Number(router.query.id),
+                    ]);
+                    window.alert("댓글 삭제 성공");
+                  },
+                  onError: () => {
+                    window.alert("댓글 삭제 실패");
+                  },
+                }
+              );
+            }}
+          />
+        )}
       </ReadCommentItemText>
     </ReadCommentItemContainer>
   );

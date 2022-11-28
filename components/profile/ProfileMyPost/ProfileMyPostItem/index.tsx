@@ -12,6 +12,7 @@ import {
   ProfileMyPostItemTitle,
 } from "./style";
 import { FaHeart } from "@react-icons/all-files/fa/FaHeart";
+import dateTransform from "../../../../util/transform/dateTransform";
 
 interface Props {
   data: PostDetail;
@@ -20,6 +21,8 @@ interface Props {
 const ProfileMyPostItem = ({ data }: Props) => {
   const router = useRouter();
 
+  console.log(data.like_count);
+
   return (
     <ProfileMyPostItemContainer onClick={() => router.push(`/read/${data.id}`)}>
       <ProfileMyPostItemBanner src={data.thumbnail_url} />
@@ -27,14 +30,14 @@ const ProfileMyPostItem = ({ data }: Props) => {
       <ProfileMyPostItemSummary>{data.summary}</ProfileMyPostItemSummary>
       <ProfileMyPostItemBottomWrap>
         <ProfileMyPostItemLikeText style={{ marginTop: "auto" }}>
-          {TimeCounting(data.createdDate, { lang: "ko" })}
+          {TimeCounting(dateTransform.format(data.createdDate), { lang: "ko" })}
         </ProfileMyPostItemLikeText>
         <ProfileMyPostItemLikeWrap>
           <ProfileMyPostItemLikeIcon>
             <FaHeart />
           </ProfileMyPostItemLikeIcon>
           <ProfileMyPostItemLikeText>
-            {data.likeCount}
+            {data.like_count}
           </ProfileMyPostItemLikeText>
         </ProfileMyPostItemLikeWrap>
       </ProfileMyPostItemBottomWrap>

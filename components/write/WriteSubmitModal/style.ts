@@ -5,7 +5,7 @@ export const WriteSubmitModalOverlay = styled.div`
   width: 100%;
   height: 100vh;
   position: absolute;
-  z-index: 2;
+  z-index: 21;
   background-color: rgba(0, 0, 0, 0.5);
   top: 0px;
   left: 0px;
@@ -15,9 +15,9 @@ export const WriteSubmitModalContainer = styled.div`
   width: 522px;
   height: 520px;
   position: absolute;
-  z-index: 3;
+  z-index: 22;
   border-radius: 5px;
-  background-color: ${({ theme }) => theme.backgroundColor};
+  background-color: #f8f9fa;
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
@@ -48,13 +48,30 @@ export const WriteSubmitModalImgLabel = styled.label`
   flex-direction: column;
   align-items: center;
   justify-content: center;
+  row-gap: 10px;
+  cursor: pointer;
+`;
+
+export const WriteSubmitModalImgLabelIcon = styled.div`
+  width: 50px;
+  height: 50px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 50px;
+  color: white;
+`;
+
+export const WriteSubmitModalImgLabelText = styled.p`
+  font-size: 16px;
+  color: white;
 `;
 
 export const WriteSubmitModalSummaryTextarea = styled.textarea`
   width: 100%;
   height: 165px;
   border-radius: 5px;
-  background-color: ${({ theme }) => theme.backgroundColor2};
+  background-color: white;
   outline: none;
   border: 0px;
   resize: none;
@@ -78,8 +95,7 @@ export const WriteSubmitModalCancelButton = styled.button`
   color: white;
   font-size: 16px;
   background: none;
-  color: ${({ theme }) => theme.contrast};
-
+  color: black;
   &:hover {
     background-color: rgba(1, 1, 1, 0.1);
   }

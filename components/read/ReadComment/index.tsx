@@ -1,3 +1,4 @@
+import { useGetMyMember } from "../../../quries/member/member.query";
 import { PostComment } from "../../../types/post/post.type";
 import ReadCommentForm from "./ReadCommentForm";
 import ReadCommentItem from "./ReadCommentItem";
@@ -9,12 +10,18 @@ interface Props {
 }
 
 const ReadComment = ({ postid, comments }: Props) => {
+  const { data: serverMyMemberData } = useGetMyMember();
+
   return (
     <ReadCommentContainer>
       <ReadCommentForm postid={postid} />
       <ReadCommentItemWrap>
         {comments?.map((comment) => (
-          <ReadCommentItem data={comment} key={comment.id} />
+          <ReadCommentItem
+            userId={serverMyMemberData?.id!}
+            data={comment}
+            key={comment.id}
+          />
         ))}
       </ReadCommentItemWrap>
     </ReadCommentContainer>

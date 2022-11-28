@@ -1,13 +1,10 @@
 import type { NextPage } from "next";
 import { dehydrate, QueryClient } from "react-query";
 import Main from "../components/main";
-import useMain from "../hooks/main/useMain";
 import noticeRepository from "../repository/notice/notice.repository";
 import postRepository from "../repository/post/post.repository";
 
 const MainPage: NextPage = () => {
-  useMain();
-
   return <Main />;
 };
 

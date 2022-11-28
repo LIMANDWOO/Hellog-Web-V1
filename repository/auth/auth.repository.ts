@@ -1,9 +1,23 @@
 import axios from "axios";
-import { LoginWithGoogleOAuthResponse } from "../../types/auth/auth.type";
-import { postLoginWithGoogleOAuthParam } from "./auth.param";
+import {
+  LoginWithGoogleOAuthResponse,
+  RefreshResponse,
+} from "../../types/auth/auth.type";
+import { postLoginWithGoogleOAuthParam, postRefreshParam } from "./auth.param";
 import config from "../../config/config.json";
 
 class AuthRepository {
+  public async postRefresh({
+    refreshToken,
+  }: postRefreshParam): Promise<RefreshResponse> {
+    const { data } = await axios.post(
+      `${config.HELLOG_V1_SERVER}/auth/refresh`,
+      { refreshToken }
+    );
+
+    return data;
+  }
+
   public async postLoginWithGoogleOAuth({
     email,
     picture,

@@ -1,7 +1,12 @@
 import dynamic from "next/dynamic";
 import { useRouter } from "next/router";
 import TimeCounting from "time-counting";
-import { useDeleteNotice } from "../../quries/notice/notice.query";
+import { useGetMyMember } from "../../quries/member/member.query";
+import {
+  useDeleteNotice,
+  useGetNotice,
+} from "../../quries/notice/notice.query";
+import dateTransform from "../../util/transform/dateTransform";
 import NoticeReadDropdown from "./NoticeReadDropdown";
 import {
   NoticeReadContainer,
@@ -20,38 +25,45 @@ const NoticeRead = () => {
 
   const deleteNoticeMutation = useDeleteNotice();
 
+  const { data: serverNoticeData } = useGetNotice({
+    notice_id: Number(router.query.id),
+  });
+
+  const { data: serverMyMemberData } = useGetMyMember();
+
   return (
     <NoticeReadContainer>
       <NoticeReadTitleWrap>
-        <NoticeReadTitle>공지사항입니다</NoticeReadTitle>
-        <NoticeReadDropdown
-          onDelete={() => {
-            deleteNoticeMutation.mutate(
-              { notice_id: Number(router.query.id) },
-              {
-                onSuccess: () => {
-                  window.alert("공지사항 삭제 성공");
-                  router.push("/");
-                },
-                onError: () => {
-                  window.alert("공지사항 삭제 실패");
-                },
-              }
-            );
-          }}
-          onModify={() => {}}
-        />
+        <NoticeReadTitle>{serverNoticeData?.title}</NoticeReadTitle>
+        {serverMyMemberData?.id === serverNoticeData?.user.id && (
+          <NoticeReadDropdown
+            onDelete={() => {
+              deleteNoticeMutation.mutate(
+                { notice_id: Number(router.query.id) },
+                {
+                  onSuccess: () => {
+                    window.alert("공지사항 삭제 성공");
+                    router.push("/");
+                  },
+                  onError: () => {
+                    window.alert("공지사항 삭제 실패");
+                  },
+                }
+              );
+            }}
+            onModify={() => {}}
+          />
+        )}
       </NoticeReadTitleWrap>
       <NoticeReadProfileWrap>
-        <NoticeReadProfileText>{`${"임동현"} ∙ ${TimeCounting("2022-11-24", {
-          lang: "ko",
-        })}`}</NoticeReadProfileText>
+        <NoticeReadProfileText>{`${"임동현"} ∙ ${TimeCounting(
+          dateTransform.format(serverNoticeData?.createdDate!),
+          {
+            lang: "ko",
+          }
+        )}`}</NoticeReadProfileText>
       </NoticeReadProfileWrap>
-      <EditorViewer
-        content={
-          "# 위에 내 이상형임\n # 안녕하세요\n ## 안뇽하세요\n# 안녕하세요\nasdas# 안녕하세요\n# 안녕하세요\nasdas"
-        }
-      />
+      <EditorViewer content={serverNoticeData?.content!} />
     </NoticeReadContainer>
   );
 };

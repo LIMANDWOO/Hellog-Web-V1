@@ -12,11 +12,11 @@ export const getServerSideProps = async ({
 }: GetServerSidePropsContext) => {
   const queryClient = new QueryClient();
 
-  //   await Promise.all([
-  //     queryClient.prefetchQuery(["notice/getNotice", query.id], () =>
-  //       noticeRepository.getNotice({ notice_id: Number(query.id) })
-  //     ),
-  //   ]);
+  await Promise.all([
+    queryClient.prefetchQuery(["notice/getNotice", query.id], () =>
+      noticeRepository.getNotice({ notice_id: Number(query.id) })
+    ),
+  ]);
 
   return {
     props: {
